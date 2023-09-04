@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Centered Divs</title>
+    {% load static %}
+    <style>
+        /* Style for the outer container */
+        .outer-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            width:100%;
+            background-color: #ffffff; /* Light gray background for better visibility */
+            background: radial-gradient(circle, rgb(76, 111, 226),rgb(0, 9, 70));
+            
+        }
+
+    
+
+        /* Style for individual divs inside the inner container */
+        .box {
+            width: 400px;
+            height: 400px; /* Giving a square shape */
+            background-color: #ffffff; /* Nice blue color */
+            border-radius: 10px;
+            margin: 20px;
+            align-items: center;
+            transition: background-color 0.3s ease;
+        }
+        .box:hover {
+             background-color: rgb(158, 160, 158);
+        }
+
+
+        /* Style for the inner div container */
+        .inner-box{
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="outer-container">
+                    <!-- Old Version -->
+        <div class="box" data-url="{% url 'old-page' %}">
+            <div class="inner-box">
+                <h3>Old Version</h3>
+            </div>
+        </div>
+
+        <!-- New Version -->
+        <div class="box" data-url="{% url 'new-page' %}">
+            <div class="inner-box">
+                <h3>New Version</h3>
+            </div>
+        </div>
+    </div>   
+</body>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const divs = document.querySelectorAll('.box');
+        divs.forEach(div => {
+            div.addEventListener('click', function() {
+                const url = this.getAttribute('data-url');
+                window.location.href = url;
+            });
+        });
+    });
+</script>
+
+</html>

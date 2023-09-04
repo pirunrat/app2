@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Input Fields</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .input-container {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+
+        .input-container input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #f4f4f4;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        .input-container input:focus {
+            background-color: #eaeaea;
+            outline: none;
+        }
+
+        .input-container label {
+            margin-bottom: 8px;
+            display: block;
+            font-weight: bold;
+        }
+        
+
+    </style>
+</head>
+
+<body>
+
+    <div class="input-container">
+        <label for="input1">Input 1:</label>
+        <input type="text" id="input1" placeholder="Enter value for Input 1">
+
+        <label for="input2">Input 2:</label>
+        <input type="text" id="input2" placeholder="Enter value for Input 2">
+
+        <label for="input3">Input 3:</label>
+        <input type="text" id="input3" placeholder="Enter value for Input 3">
+        
+        <button>Predict</button>
+    </div>
+
+</body>
+
+</html>

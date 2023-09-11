@@ -4,66 +4,155 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modern Input Fields</title>
+    <title>Car Prediction Input</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'app/content.css' %}">
     <style>
+        /* Reset */
+        body, h1, h3, h5, p {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* Body Styles */
         body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f4f4f4;
+            background-color: #f5f7fa;
+            height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
         }
 
-        .input-container {
-            background: #ffffff;
+        /* Container */
+        .container {
+            width: 60%;
+            background-color: #ffffff;
             padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            width: 300px;
+            border-radius: 8px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
         }
 
-        .input-container input {
-            width: 100%;
-            padding: 10px;
+        /* Headings */
+        h1 {
+            text-align: center;
+            color: #2e3131;
+            margin-bottom: 10px;
+        }
+
+        h3 {
+            text-align: center;
+            color: #747d8c;
             margin-bottom: 20px;
+        }
+
+        h5 {
+            text-align: center;
+            color: #747d8c;
+            margin-top: 10px;
+        }
+
+        /* Form Styles */
+        .prediction-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .input-group label {
+            font-weight: 600;
+            color: #2f3640;
+        }
+
+        .input-group input {
+            padding: 10px 15px;
+            border: 1px solid #dcdde1;
+            border-radius: 4px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .input-group input:focus {
+            border-color: #3498db;
+            box-shadow: 0px 0px 8px rgba(52, 152, 219, 0.5);
+        }
+
+        .error {
+            color: #e74c3c;
+        }
+
+        .submit-btn {
+            padding: 10px 15px;
+            background-color: #3498db;
+            color: #ffffff;
             border: none;
-            border-radius: 5px;
-            background-color: #f4f4f4;
-            font-size: 16px;
-            transition: background-color 0.3s ease;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
         }
 
-        .input-container input:focus {
-            background-color: #eaeaea;
-            outline: none;
+        .submit-btn:hover {
+            background-color: #2980b9;
         }
 
-        .input-container label {
-            margin-bottom: 8px;
-            display: block;
-            font-weight: bold;
+        /* Result Display */
+        .result {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 18px;
+            color: #2c3e50;
         }
-        
-
     </style>
 </head>
 
 <body>
+    <div class="container">
+        <h1>Chaky UsedCar</h1>
+        <h3>Input your desired specifications below</h3>
+        <form method="post" class="prediction-form">
+            {% csrf_token %}
 
-    <div class="input-container">
-        <label for="input1">Input 1:</label>
-        <input type="text" id="input1" placeholder="Enter value for Input 1">
+            <h5>Mileage: 0-42 | Max Power: 0-400</h5>
 
-        <label for="input2">Input 2:</label>
-        <input type="text" id="input2" placeholder="Enter value for Input 2">
+            <!-- Year Field -->
+            <div class="input-group">
+                {{ form.year.label_tag }}
+                {{ form.year }}
+                {% if form.year.errors %}
+                <div class="error">{{ form.year.errors }}</div>
+                {% endif %}
+            </div>
 
-        <label for="input3">Input 3:</label>
-        <input type="text" id="input3" placeholder="Enter value for Input 3">
-        
-        <button>Predict</button>
+            <!-- Max Power Field -->
+            <div class="input-group">
+                {{ form.max_power.label_tag }}
+                {{ form.max_power }}
+                {% if form.max_power.errors %}
+                <div class="error">{{ form.max_power.errors }}</div>
+                {% endif %}
+            </div>
+
+            <!-- Mileage Field -->
+            <div class="input-group">
+                {{ form.mileage.label_tag }}
+                {{ form.mileage }}
+                {% if form.mileage.errors %}
+                <div class="error">{{ form.mileage.errors }}</div>
+                {% endif %}
+            </div>
+
+            <button type="submit" class="submit-btn">Predict</button>
+        </form>
+
+        <div class="result">
+            <p>{{ prediction }}</p>
+        </div>
     </div>
-
 </body>
 
 </html>

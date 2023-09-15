@@ -10,53 +10,63 @@
         /* Style for the outer container */
         .outer-container {
             display: flex;
+            flex-direction: column; /* Stack elements vertically */
             justify-content: center;
             align-items: center;
             height: 100vh;
-            width:100%;
+            width: 100%;
             background-color: #ffffff; /* Light gray background for better visibility */
-            background: radial-gradient(circle, rgb(76, 111, 226),rgb(0, 9, 70));
-            
+            background: radial-gradient(circle, rgb(152, 152, 180),rgb(51, 2, 111));
         }
 
-    
+        /* Style for the inner div container */
+        .inner-container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
 
         /* Style for individual divs inside the inner container */
         .box {
-            width: 400px;
-            height: 400px; /* Giving a square shape */
-            background-color: #ffffff; /* Nice blue color */
+            width: 300px;
+            height: 70px; /* Giving a square shape */
+            background-color: #c6c6cb; /* Nice blue color */
             border-radius: 10px;
             margin: 20px;
             align-items: center;
             transition: background-color 0.3s ease;
         }
+
         .box:hover {
-             background-color: rgb(158, 160, 158);
+             background-color: rgb(133, 82, 214);
         }
 
-
-        /* Style for the inner div container */
-        .inner-box{
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
+        h1 {
+           color: whitesmoke;
+           text-align: center; /* Center the heading text */
+           margin-bottom: 20px; /* Add some spacing below the heading */
+           font-size: 100px; /* You can adjust the size as needed */
+        }
+        h3{
+           color: rgb(58, 58, 58);
+           text-align: center; /* Center the heading text */
+           margin-bottom: 20px; /* Add some spacing below the heading */
+            
         }
     </style>
 </head>
 
 <body>
     <div class="outer-container">
-                    <!-- Old Version -->
-        <div class="box" data-url="{% url 'old-page' %}">
-            <div class="inner-box">
+        <h1>Car Price Prediction</h1>
+        <!-- Old Version -->
+        <div class="inner-container">
+            <div class="box" data-url="{% url 'old-page' %}">
                 <h3>Old Version</h3>
             </div>
-        </div>
 
-        <!-- New Version -->
-        <div class="box" data-url="{% url 'new-page' %}">
-            <div class="inner-box">
+            <!-- New Version -->
+            <div class="box" data-url="{% url 'new-page' %}">
                 <h3>New Version</h3>
             </div>
         </div>

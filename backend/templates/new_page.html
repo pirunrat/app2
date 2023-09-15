@@ -17,7 +17,7 @@
 
         /* Body Styles */
         body {
-            background-color: #f5f7fa;
+            background-color: #591b8f;
             height: 100vh;
             display: flex;
             justify-content: center;
@@ -27,7 +27,7 @@
         /* Container */
         .container {
             width: 60%;
-            background-color: #ffffff;
+            background-color: #fdfdfd;
             padding: 30px;
             border-radius: 8px;
             box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
@@ -68,13 +68,16 @@
         .input-group label {
             font-weight: 600;
             color: #2f3640;
+            margin-right: 10px; /* Add some spacing between the label and input */
         }
 
         .input-group input {
-            padding: 10px 15px;
+            width: 100%;
+            padding: 10px;
             border: 1px solid #dcdde1;
             border-radius: 4px;
             transition: all 0.3s ease-in-out;
+            margin: 0 auto; /* Center horizontally by setting left and right margins to 'auto' */
         }
 
         .input-group input:focus {
@@ -87,6 +90,7 @@
         }
 
         .submit-btn {
+            width: 25%;
             padding: 10px 15px;
             background-color: #3498db;
             color: #ffffff;
@@ -94,6 +98,7 @@
             border-radius: 4px;
             cursor: pointer;
             transition: background-color 0.3s;
+            margin: 0 auto; /* Center horizontally by setting left and right margins to 'auto' */
         }
 
         .submit-btn:hover {
@@ -107,6 +112,24 @@
             font-size: 18px;
             color: #2c3e50;
         }
+         /* ... Your existing CSS styles ... */
+
+        /* Modern and Elegant Button Styles */
+        .navigation-button {
+            background-color: #3498db;
+            color: #ffffff;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .navigation-button:hover {
+            background-color: #2980b9;
+            transform: scale(1.05); /* Add a subtle scale effect on hover */
+        }
     </style>
 </head>
 
@@ -114,10 +137,12 @@
     <div class="container">
         <h1>Chaky UsedCar</h1>
         <h3>Input your desired specifications below</h3>
+        <!-- Inside the <body> section of page1.html -->
         <form method="post" class="prediction-form">
             {% csrf_token %}
 
-            <h5>Mileage: 0-42 | Max Power: 0-400</h5>
+            <h5>Mileage should be within: 0-42</h5>
+            <h5> Max Power should be within: 0-400</h5>
 
             <!-- Year Field -->
             <div class="input-group">
@@ -145,14 +170,25 @@
                 <div class="error">{{ form.mileage.errors }}</div>
                 {% endif %}
             </div>
-
+            
             <button type="submit" class="submit-btn">Predict</button>
         </form>
-
+        <button id="goToMainButton" class="navigation-button">Go to Main Page</button>
         <div class="result">
             <p>{{ prediction }}</p>
         </div>
     </div>
+
+    <script>
+        // Select the button element by its id
+        const goToMainButton = document.getElementById("goToMainButton");
+    
+        // Add a click event listener to the button
+        goToMainButton.addEventListener("click", function() {
+            // Navigate to the main page by setting the window.location.href
+            window.location.href = "/";  // Use the correct URL pattern for main_page
+        });
+    </script>
 </body>
 
 </html>

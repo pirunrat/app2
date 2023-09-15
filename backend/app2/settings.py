@@ -25,7 +25,7 @@ SECRET_KEY = 'n9(!25=6xz2ix73)oo_8isvnod)0vuj%n(xc49t+jqsndit_=v'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['st124003-pirunrat.ml2023.cs.ait.ac.th', 'localhost']
 
 
 # Application definition
